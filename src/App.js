@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Login from './Login';
 import { getTokenFromUrl } from './spotify';
+import SpotifyWebApi from 'spotify-web-api-js'
 
+
+const spotify = new SpotifyWebApi() // create a new instance of that Spotify Web Api
 
 function App() {
   // in react, thats how we handle variables  using state 
@@ -16,6 +19,13 @@ function App() {
 
     if (_token) {
       setToken(_token)
+
+      spotify.setAccessToken(_token)  // set it to connect react app to spotify api
+
+      // .getMe() basically returns a promise, asynchronous, so .then can use and check if users is created and not 
+      spotify.getMe().then(user => {
+        console.log("user > ", user)
+      })
     }
 
     console.log("Access Token > ", token)
