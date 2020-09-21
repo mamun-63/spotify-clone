@@ -11,11 +11,11 @@ const spotify = new SpotifyWebApi() // create a new instance of that Spotify Web
 
 function App() {
   // in react, thats how we handle variables  using state 
-  const [token, setToken] = useState(null)
+  // const [token, setToken] = useState(null)
 
   // first {} is if we need any value to pull from data layer
   // dispatch is like gun, so to shoot into tha data layer and update the values
-  const [{ user }, dispatch] = useDataLayerValue()  // grabing the user to check here whether its updated in layer or not after dispatching user
+  const [{ user, token }, dispatch] = useDataLayerValue()  // grabing the user to check here whether its updated in layer or not after dispatching user
 
   // when hit the login> Agree button, App component loads and this code will fire
   useEffect(() => {
@@ -24,7 +24,11 @@ function App() {
     const _token = hash.access_token  // thats standerd to use _token as we have in useState() a token variable
 
     if (_token) {
-      setToken(_token)
+
+      dispatch({
+        type: 'SET_TOKEN',
+        token: _token,
+      })
 
       spotify.setAccessToken(_token)  // set it to connect react app to spotify api
 
@@ -33,7 +37,7 @@ function App() {
         // console.log("user > ", user)
         dispatch({
           type: 'SET_USER',
-          user,
+          user: user,
         })
       })
     }
@@ -45,12 +49,13 @@ function App() {
   // and pull the user in: const [{ user }, dispatch] = useDataLayerValue() and check this if it updates the layer or not 
   // as it was empty in initial state
   console.log("user > ", user)
+  console.log("token > ", token)
 
   return (
     // BEM
     <div className="app">
       {/* thats how we write Javascript code inside the return - {} */}
-      { token ? <Player /> : <Login /> }
+      { token ? <Player spotify={spotify}/> : <Login /> }
 
     </div>
   );
