@@ -2,7 +2,7 @@ export const initialState = {
   user: null,
 
   // change token: null, after finished developing, this is doing just for our convenience 
-  token: 'BQBgpcYgQFCyJGMlV0yTOWD4CF-x-At_XPhznQwuDbb9WqRK_CWnmkHVHYMnveITC9-ukjLwCtsAgjXu8yl7yrH289fp0QZ7mNHow0BAt7eO95eyEoG9OPRz6K6mlSyEV76usyHrHZCYtkXpBh7BGxxJQoBjRsOxywOMwwFMvTlv4hlx',
+  // token: 'BQBgpcYgQFCyJGMlV0yTOWD4CF-x-At_XPhznQwuDbb9WqRK_CWnmkHVHYMnveITC9-ukjLwCtsAgjXu8yl7yrH289fp0QZ7mNHow0BAt7eO95eyEoG9OPRz6K6mlSyEV76usyHrHZCYtkXpBh7BGxxJQoBjRsOxywOMwwFMvTlv4hlx',
 
   playlists: [],
   playing: false,
@@ -28,6 +28,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         token: action.token
+      }
+
+    case 'SET_PLAYLISTS':
+      return {
+        ...state,
+        playlists: action.playlists
       }
 
     default:

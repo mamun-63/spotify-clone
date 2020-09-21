@@ -15,7 +15,7 @@ function App() {
 
   // first {} is if we need any value to pull from data layer
   // dispatch is like gun, so to shoot into tha data layer and update the values
-  const [{ user, token }, dispatch] = useDataLayerValue()  // grabing the user to check here whether its updated in layer or not after dispatching user
+  const [{ user, token, playlists }, dispatch] = useDataLayerValue()  // grabing the user to check here whether its updated in layer or not after dispatching user
 
   // when hit the login> Agree button, App component loads and this code will fire
   useEffect(() => {
@@ -40,6 +40,13 @@ function App() {
           user: user,
         })
       })
+
+      spotify.getUserPlaylists().then((playlists => (
+        dispatch({
+          type: 'SET_PLAYLISTS',
+          playlists: playlists,
+        })
+      )))
     }
 
     console.log("Access Token > ", token)
@@ -50,6 +57,7 @@ function App() {
   // as it was empty in initial state
   console.log("user > ", user)
   console.log("token > ", token)
+  console.log("playlists > ", playlists)
 
   return (
     // BEM
