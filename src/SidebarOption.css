@@ -4,7 +4,7 @@
   color: grey;
   height: 40px;
   cursor: pointer;
-  transition: 110ms color ease-in;
+  transition: 200ms color ease-in;
 }
 
 .sidebarOption:hover {
