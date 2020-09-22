@@ -1,7 +1,7 @@
 export const initialState = {
   user: null,
 
-  // change token: null, after finished developing, this is doing just for our convenience 
+  // after finished developing, comment token portion
   // token: 'BQBgpcYgQFCyJGMlV0yTOWD4CF-x-At_XPhznQwuDbb9WqRK_CWnmkHVHYMnveITC9-ukjLwCtsAgjXu8yl7yrH289fp0QZ7mNHow0BAt7eO95eyEoG9OPRz6K6mlSyEV76usyHrHZCYtkXpBh7BGxxJQoBjRsOxywOMwwFMvTlv4hlx',
 
   playlists: [],

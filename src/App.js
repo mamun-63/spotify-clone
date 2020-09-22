@@ -48,8 +48,9 @@ function App() {
         })
       )))
 
-      // taking may real spotify discover weekly uri id, to check it
-      spotify.getPlaylist('5O0lR7LiAE5kPqw0XEDKRn').then(response => 
+      // taking may real spotify 'your release radar' url id, to check it
+      // discover weekly url id - thats used in tutorial
+      spotify.getPlaylist('6jrZ6ANfcZGWyw0YmzHzpu').then(response => 
         dispatch({
           type: 'SET_DISCOVER_WEEKLY',
           discover_weekly: response,

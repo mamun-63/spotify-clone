@@ -19,8 +19,12 @@ function Body({spotify}) {
         <img src={discover_weekly?.images[0]?.url} alt=""/>
         <div className="body__infoText">
           <strong>PLAYLIST</strong>
-          <h2>Discover Weekly</h2>
+          <h2>Your Release Radar</h2>
           <p>{discover_weekly?.description}</p>
+          <span>  
+            <a href="">{discover_weekly?.owner.display_name}</a> 
+            {` . ${discover_weekly?.followers.total} likes . ${discover_weekly?.tracks.total} songs`}
+          </span>
         </div>
       </div>
 
